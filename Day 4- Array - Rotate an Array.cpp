@@ -94,3 +94,47 @@ int main() {
     return 0;
 }
 // } Driver Code Ends
+
+
+without any inbuilt function:
+//{ Driver Code Starts
+// Initial function template for C++
+
+#include <bits/stdc++.h>
+using namespace std;
+
+// } Driver Code Ends
+class Solution {
+public:
+    // Function to rotate an array by d elements in counter-clockwise direction.
+    void rotateArr(int arr[], int n, int d) {
+        // Adjust d to ensure it's within bounds
+        d = d % n;
+        if (d == 0) return;
+
+        // Reverse the first d elements manually
+        reverseArray(arr, 0, d - 1);
+
+        // Reverse the remaining n-d elements manually
+        reverseArray(arr, d, n - 1);
+
+        // Reverse the entire array manually
+        reverseArray(arr, 0, n - 1);
+    }
+
+private:
+    // Function to reverse an array from index `start` to `end`
+    void reverseArray(int arr[], int start, int end) {
+        while (start < end) {
+            // Swap the elements at `start` and `end`
+            int temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+
+            // Move the pointers towards the center
+            start++;
+            end--;
+        }
+    }
+};
+
